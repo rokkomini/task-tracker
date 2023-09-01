@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "workspaces": [
-    "server"
+    "server",
+    "shared"
   ]
 }
