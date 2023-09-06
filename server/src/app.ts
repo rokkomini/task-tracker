@@ -5,6 +5,7 @@ import express, {
     Request,
     Response,
 } from "express";
+import taskRouter from "./routes/task";
 
 import dotenv from "dotenv";
 import cors from "cors";
@@ -17,9 +18,13 @@ const PORT: number = parseInt(process.env.PORT || "8800");
 app.use(cors()); 
 app.use(json());
 
-app.get("/", (req: Request, res: Response) => {
-    res.json({ Message: "Hello World!" });
-});
+app.use('/', taskRouter)
+
+/* app.get("/", (req: Request, res: Response) => {
+    res.json({ Message: "Hello Stupid World!" });
+}); */
+
+
 
 app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`);
