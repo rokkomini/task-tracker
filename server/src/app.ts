@@ -6,6 +6,7 @@ import express, {
     Response,
 } from "express";
 import taskRouter from "./routes/task";
+import { setupMongoDb } from "./models/common";
 
 import dotenv from "dotenv";
 import cors from "cors";
@@ -25,7 +26,10 @@ app.use('/', taskRouter)
 }); */
 
 
+const MONGO_URL: string = process.env.MONGO_URL || 'mongodb://localhost:27017/task-tracker'
 
-app.listen(PORT, () => {
+
+app.listen(PORT, async () => {
+    await setupMongoDb(MONGO_URL)
     console.log(`Server running on port: ${PORT}`);
 });
