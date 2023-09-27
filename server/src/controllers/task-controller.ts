@@ -9,9 +9,9 @@ const loadTasks = async (): Promise<TaskItem[]> => {
   } */
 };
 
-const saveTask = async (task: TaskItem) => {
+const saveTask = async (task: TaskItem): Promise<TaskItem | null> => {
   try {
-    await saveTaskData(task)
+    return await saveTaskData(task)
   } catch {
     throw new Error('Error saving task')
   }

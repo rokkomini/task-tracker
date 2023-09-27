@@ -25,6 +25,12 @@ app.use('/', taskRouter)
     res.json({ Message: "Hello Stupid World!" });
 }); */
 
+function sayHello(): void {
+    console.log('hello WOOOORLD')
+  }
+  
+  sayHello()
+
 
 const MONGO_URL: string = process.env.MONGO_URL || 'mongodb://localhost:27017/task-tracker'
 
