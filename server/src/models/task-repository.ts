@@ -17,11 +17,8 @@ const TaskSchema = new Schema(
 const TaskModel = model<TaskItem>('TaskItem', TaskSchema);
 
 const saveTaskData = async (taskItem: TaskItem): Promise<TaskItem | null> => {
-	console.log('save to db', taskItem) 
   const newTask = new TaskModel(taskItem);
-  // const timestamp = new Date().toString()
   newTask.created = new Date().toString()
-  // newTask.task = taskItem
   return await newTask.save();
 };
 
@@ -29,5 +26,13 @@ const loadTasksData =async (): Promise<TaskItem[]> => {
 	return await TaskModel.find({}).exec()
 }
 
+const updateTaskData = async (taskId : string, task : TaskItem): Promise<TaskItem | null> => {
+  return await TaskModel.findByIdAndUpdate(taskId, {
+    task: task.task,
+    status: task.status,
+    created: task.created,
+    modified: new Date().toString()
+  })
+}
 
-export { saveTaskData, loadTasksData };
+export { saveTaskData, loadTasksData, updateTaskData };

@@ -1,4 +1,4 @@
-import { saveTaskData, loadTasksData } from "../models/task-repository";
+import { saveTaskData, loadTasksData, updateTaskData } from "../models/task-repository";
 import { TaskItem } from "@task-tracker/shared";
 
 const loadTasks = async (): Promise<TaskItem[]> => {
@@ -17,4 +17,12 @@ const saveTask = async (task: TaskItem): Promise<TaskItem | null> => {
   }
 }
 
-export { loadTasks, saveTask };
+const updateTask =async (taskId:string, taskItem: TaskItem): Promise<TaskItem|null> => {
+  try {
+    return await updateTaskData(taskId, taskItem)
+  } catch {
+    throw new Error('cannot update task')
+  }
+}
+
+export { loadTasks, saveTask, updateTask };
