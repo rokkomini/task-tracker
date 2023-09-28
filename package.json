@@ -10,6 +10,7 @@
   "license": "ISC",
   "workspaces": [
     "server",
+    "client",
     "shared"
   ]
 }
