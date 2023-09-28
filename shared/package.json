@@ -2,7 +2,7 @@
   "name": "@task-tracker/shared",
   "version": "1.0.0",
   "description": "",
-  "main": "src/task-item.js",
+  "main": "src/index.ts",
   "devDependencies": {
     "@types/node": "^20.5.7",
     "typescript": "^5.2.2"

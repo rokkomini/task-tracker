@@ -6,7 +6,7 @@ export interface TaskItem {
   modified?: Date;
 }
 
-enum TaskStatus {
+export enum TaskStatus {
   todo = 'todo',
   doing = 'doing',
   done = 'done'

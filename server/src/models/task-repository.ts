@@ -1,10 +1,10 @@
-import { TaskItem } from '@task-tracker/shared';
+import { TaskItem, TaskStatus } from '@task-tracker/shared';
 import { model, Schema } from 'mongoose';
 
 const TaskSchema = new Schema(
   {
     task: { type: String, require: true},
-    status: { type: String, default: 'todo' },
+    status: { type: String, default: TaskStatus.todo },
     created: { type: String },
     modified: { type: String }
   },

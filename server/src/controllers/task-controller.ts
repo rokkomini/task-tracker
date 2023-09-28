@@ -3,10 +3,6 @@ import { TaskItem } from "@task-tracker/shared";
 
 const loadTasks = async (): Promise<TaskItem[]> => {
   return await loadTasksData()
-/*   try {
-  } catch {
-    throw new Error('Error loading tasks')
-  } */
 };
 
 const saveTask = async (task: TaskItem): Promise<TaskItem | null> => {
