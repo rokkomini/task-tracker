@@ -1,18 +1,19 @@
+import { TaskItem } from '@task-tracker/shared';
 import React, { useState } from 'react'
 
-export default function TaskInput() {
-  const [taskInput, setTaskInput] = useState<string>()
+export interface InputProps {
+  task: string;
+  setTask : (task: string) => void;
+  handleOnClick: (taskItem: TaskItem) => void
+}
 
-  const testClick = () => {
-    console.log('the input is:', taskInput)
-    
-  }
+export default function TaskInput(input: InputProps) {
+  const [taskInput, setTaskInput] = useState<TaskItem>({task: '', status: '', created: ''})
 
   return (
     <div>
-      <input type="text" onChange={(e) => setTaskInput(e.target.value)} />
-      <button onClick={() => testClick()}>Click me!</button>
-      <p>{taskInput}</p>
+      <input type="text" onChange={(e) => input.setTask(e.target.value)} />
+      <button onClick={() => input.handleOnClick(taskInput)}>Click me!</button>
     </div>
   )
 }

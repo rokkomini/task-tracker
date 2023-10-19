@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { TaskItem } from '@task-tracker/shared'
-import axios from 'axios'
 
 export default function TaskList({tasks}: { tasks: TaskItem[] }) {
 

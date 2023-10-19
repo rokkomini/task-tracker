@@ -18,7 +18,7 @@ const TaskModel = model<TaskItem>('TaskItem', TaskSchema);
 
 const saveTaskData = async (taskItem: TaskItem): Promise<TaskItem | null> => {
   const newTask = new TaskModel(taskItem);
-  newTask.created = new Date().toString()
+  newTask.created = new Date().toString();
   return await newTask.save();
 };
 

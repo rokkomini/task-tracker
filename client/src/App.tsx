@@ -7,32 +7,43 @@ import { TaskItem } from '@task-tracker/shared';
 function App() {
   const [taskList, setTaskList] = useState<TaskItem[]>([])
   const [error, setError] = useState<string>('')
+  const [taskInput, setTaskInput] = useState<TaskItem>({ task: '', status: '', created: '' })
 
   axios.defaults.baseURL = process.env.REACT_APP_URL || 'http://localhost:8800/'
 
   const getTasks = async () => {
     const response = await axios
       .get<TaskItem[]>('')
-    return response.data
+      .then(response => setTaskList(response.data))
+    //return response.data
+  }
+
+  const createTask = async () => {
+    try {
+      await axios.post('', { task: taskInput.task })
+      getTasks()
+    } catch {
+      setError('Something went wrong')
+    } finally {
+      setTaskInput({task: '', status: '', created: '' })
+    }
   }
 
   useEffect(() => {
     getTasks()
-      .then(setTaskList)
+     // .then(setTaskList)
       .catch(error => {
         setTaskList([])
         setError('Nothing to show')
       })
-     
+
   }, [])
 
   return (
     <div className='page-wrapper'>
-      <TaskInput />
-      {/* {taskList && taskList.map(item => (
-        <TaskList tasks={taskList}/>
-      ))} */}
-      <TaskList tasks={taskList}/>
+      <TaskInput setTask={(task: string) => setTaskInput( {...taskInput, task} )} handleOnClick={createTask} task={taskInput.task}/>
+      <TaskList tasks={taskList} />
+      <p></p>
     </div>
   );
 }
