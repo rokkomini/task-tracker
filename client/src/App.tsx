@@ -43,7 +43,6 @@ function App() {
     <div className='page-wrapper'>
       <TaskInput setTask={(task: string) => setTaskInput( {...taskInput, task} )} handleOnClick={createTask} task={taskInput.task}/>
       <TaskList tasks={taskList} />
-      <p></p>
     </div>
   );
 }
